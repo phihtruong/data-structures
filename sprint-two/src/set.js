@@ -1,6 +1,6 @@
 var Set = function() {
   var set = Object.create(setPrototype);
-  set._storage = []; // fix me
+  set._storage = {}; // fix me
   return set;
 };
 
@@ -9,16 +9,18 @@ var setPrototype = {};
 //An .add() method, takes any string and adds it to the set
 // Complexity: O(1)
 setPrototype.add = function(item) {
-  this._storage.push(item);
+  this._storage[item] = item;
 };
-// Complexity: O(n)
+// Complexity: O(1)
 setPrototype.contains = function(item) {
-  return this._storage.includes(item);
+  if (this._storage[item]) {
+    return true;
+  }
+  return false;
 };
-// Complexity: O(n)
+// Complexity: O(1)
 setPrototype.remove = function(item) {
-  var index = this._storage.indexOf(item);
-  this._storage.splice(index, 1);
+  delete this._storage[item];
 };
 
 /*

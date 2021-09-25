@@ -11,12 +11,12 @@ var Tree = function(value) {
 
 var treeMethods = {};
 
-// Complexity:
+// Complexity: O(1)
 treeMethods.addChild = function(value) {
   this.children.push(Tree(value));
 };
 
-// Complexity:
+// Complexity: O(n)
 treeMethods.contains = function(target) {
   if (this.value === target) {
     return true;
