@@ -2,25 +2,25 @@ var Queue = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
   var someInstance = {};
-  someInstance.storage = {};
-  someInstance.backOfQueue = 1;
+  someInstance._storage = {};
+  someInstance._backOfQueue = 1;
   _.extend(someInstance, queueMethods);
   return someInstance;
 };
 
 var queueMethods = {
   enqueue: function(value) {
-    this.storage[this.backOfQueue] = value;
-    this.backOfQueue++;
+    this._storage[this._backOfQueue] = value;
+    this._backOfQueue++;
   },
   dequeue: function() {
-    var frontOfQueue = Object.keys(this.storage)[0];
-    var dequeueValue = Object.values(this.storage)[0];
-    delete this.storage[frontOfQueue];
+    var frontOfQueue = Object.keys(this._storage)[0];
+    var dequeueValue = Object.values(this._storage)[0];
+    delete this._storage[frontOfQueue];
     return dequeueValue;
   },
   size: function() {
-    return Object.keys(this.storage).length;
+    return Object.keys(this._storage).length;
   }
 };
 
